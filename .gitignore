@@ -1,0 +1,8 @@
+# Ignore debian packaging files
+*.deb
+*.changes
+*.buildinfo
+
+# Ignore other common files
+*.log
+*.tmp

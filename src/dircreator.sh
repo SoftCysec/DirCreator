@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Check if a file is provided
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <structure-file>"
+    exit 1
+fi
+
+# Read the file
+file=$1
+
+# Function to trim leading spaces
+trim_leading_spaces() {
+    echo "$1" | sed 's/^[[:space:]]*//'
+}
+
+# Function to count leading spaces
+count_leading_spaces() {
+    local count=$(echo "$1" | sed 's/^\([[:space:]]*\).*$/\1/' | wc -c)
+    echo $((count - 1))
+}
+
+# Initialize variables
+declare -a dir_stack=("")
+current_level=0
+current_dir=""
+
+while IFS= read -r line; do
+    trimmed_line=$(trim_leading_spaces "$line")
+    leading_spaces=$(count_leading_spaces "$line")
+
+    if [[ $trimmed_line == *"/" ]]; then
+        # It's a directory, handle indentation
+        if [ $leading_spaces -gt $current_level ]; then
+            dir_stack+=("$current_dir")
+            current_level=$leading_spaces
+        elif [ $leading_spaces -lt $current_level ]; then
+            while [ $current_level -gt $leading_spaces ]; do
+                current_dir="${dir_stack[-1]}"
+                dir_stack=("${dir_stack[@]:0:${#dir_stack[@]}-1}")
+                current_level=$((current_level - 4))
+            done
+        fi
+
+        current_dir="${dir_stack[-1]}$trimmed_line"
+        mkdir -p "$current_dir"
+    else
+        # It's a file
+        mkdir -p "$(dirname "${current_dir}${trimmed_line}")"
+        touch "${current_dir}${trimmed_line}"
+    fi
+done < "$file"
+
+echo "Directory structure created successfully."
+
