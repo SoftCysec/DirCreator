@@ -14,7 +14,31 @@ dircreator is a bash script that reads a tree-like structure from a file and cre
 
 Ensure you have bash installed on your system. This script is designed for Linux environments.
 
+### Installation
 
+#### From GitHub Release
+
+1. Download the latest `.deb` package from the [releases page](https://github.com/yourusername/dircreator/releases).
+2. Install the package:
+    ```sh
+    sudo dpkg -i dircreator-1.0.deb
+    ```
+
+
+#### From PPA (Optional)
+
+If you have hosted the package on a PPA, add the PPA and install:
+
+1. Add the PPA:
+    ```sh
+    sudo add-apt-repository ppa:yourusername/dircreator
+    sudo apt-get update
+    ```
+
+2. Install dircreator:
+    ```sh
+    sudo apt install dircreator
+    ```
 ### Usage
 
 Create a file named `structure.txt` with the directory structure you want. For example:

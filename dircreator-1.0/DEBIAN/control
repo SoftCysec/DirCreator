@@ -4,7 +4,6 @@ Section: utils
 Priority: optional
 Architecture: all
 Depends: bash
-Maintainer: Dedan Okware softengdedan@gmail.com
+Maintainer: Dedan Okware <softengdedan@gmail.com>
 Description: A tool to create directory structures from a text file
  This script reads a tree-like structure from a file and creates the corresponding directories and files.
-
