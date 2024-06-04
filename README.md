@@ -18,7 +18,7 @@ Ensure you have bash installed on your system. This script is designed for Linux
 
 #### From GitHub Release
 
-1. Download the latest `.deb` package from the [releases page](https://github.com/yourusername/dircreator/releases).
+1. Download the latest `.deb` package from the [releases page](https://github.com/SoftCysec/dircreator/releases).
 2. Install the package:
     ```sh
     sudo dpkg -i dircreator-1.0.deb
