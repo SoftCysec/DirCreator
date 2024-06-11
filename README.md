@@ -23,22 +23,6 @@ Ensure you have bash installed on your system. This script is designed for Linux
     ```sh
     sudo dpkg -i dircreator-1.0.deb
     ```
-
-
-#### From PPA (Optional)
-
-If you have hosted the package on a PPA, add the PPA and install:
-
-1. Add the PPA:
-    ```sh
-    sudo add-apt-repository ppa:yourusername/dircreator
-    sudo apt-get update
-    ```
-
-2. Install dircreator:
-    ```sh
-    sudo apt install dircreator
-    ```
 ### Usage
 
 Create a file named `structure.txt` with the directory structure you want. For example:
@@ -58,10 +42,6 @@ FlaskApp/
             js/
                 scripts.js
             images/
-    config.py
-    run.py
-    requirements.txt
-    README.md
 ```
 
 Run the script with the structure file:
